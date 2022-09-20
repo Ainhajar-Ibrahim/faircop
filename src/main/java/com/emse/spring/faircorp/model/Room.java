@@ -18,10 +18,10 @@ public class Room {
     @Column(nullable=false)
     private Integer floor;
 
-    @Column(nullable=false)
+    @Column()
     private Double current_temperature;
 
-    @Column(nullable=false)
+    @Column()
     private Double target_temperature;
 
     @OneToMany(mappedBy = "room")
