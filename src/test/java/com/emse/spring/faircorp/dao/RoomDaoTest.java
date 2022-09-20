@@ -1,7 +1,6 @@
 package com.emse.spring.faircorp.dao;
 
-import com.emse.spring.faircorp.model.Window;
-import com.emse.spring.faircorp.model.WindowStatus;
+import com.emse.spring.faircorp.model.Room;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,14 +10,14 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-class WindowDaoTest {
+class RoomDaoTest {
     @Autowired
-    private WindowDao windowDao;
+    private RoomDao roomDao;
 
     @Test
-    public void shouldFindAWindow() {
-        Window window = windowDao.getReferenceById(-10L);
-        Assertions.assertThat(window.getName()).isEqualTo("Window 1");
-        Assertions.assertThat(window.getWindowStatus()).isEqualTo(WindowStatus.CLOSED);
+    public void shouldFindARoom() {
+        Room room = roomDao.getReferenceById(-10L);
+        Assertions.assertThat(room.getName()).isEqualTo("Room1");
+        Assertions.assertThat(room.getCurrent_temperature()).isEqualTo(22.3);
     }
 }
