@@ -17,6 +17,9 @@ public class Window {
     @Enumerated(EnumType.STRING)
     private WindowStatus windowStatus;
 
+    @ManyToOne
+    private Room room;
+
     public Window() {
     }
 
