@@ -1,5 +1,6 @@
 package com.emse.spring.faircorp.dao;
 
+import com.emse.spring.faircorp.model.Room;
 import com.emse.spring.faircorp.model.Window;
 import com.emse.spring.faircorp.model.WindowStatus;
 import org.assertj.core.api.Assertions;
@@ -11,12 +12,16 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 class WindowDaoTest {
     @Autowired
     private WindowDao windowDao;
+    @Autowired
+    private RoomDao roomDao;
+
 
     @Test
     public void shouldFindAWindow() {
@@ -39,4 +44,17 @@ class WindowDaoTest {
         List<Window> result = windowDao.findRoomOpenWindows(-10L);
         Assertions.assertThat(result).isEmpty();
     }
+
+    @Test
+    public void shouldDeleteWindowsRoom() {
+        Room room = roomDao.getReferenceById(-10L);
+        List<Long> roomIds = room.getWindow().stream().map(Window::getId).collect(Collectors.toList());
+        Assertions.assertThat(roomIds.size()).isEqualTo(2);
+
+        windowDao.deleteWindowsbyRoom(-10L);
+        List<Window> result = windowDao.findAllById(roomIds);
+        Assertions.assertThat(result).isEmpty();
+
+    }
+
 }

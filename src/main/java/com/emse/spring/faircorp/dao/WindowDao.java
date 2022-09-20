@@ -5,9 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface WindowDao extends JpaRepository<Window, Long>, WindowDaoCustom {
     @Query("select c from Window c where c.name=:name")
     Window findByName(@Param("name") String name);
     @Query("select c from Window c where c.id=:id")
     Window getReferenceById(@Param("id") String name);
+
+    @Query("select c from Window c where c.id=:id")
+    List<Window> findAllById(@Param("id") String name);
 }
