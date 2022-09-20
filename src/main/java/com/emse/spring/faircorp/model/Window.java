@@ -1,13 +1,20 @@
 package com.emse.spring.faircorp.model;
 
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "RWINDOW")
 public class Window {
-    // (3)
+    @Id
+    @GeneratedValue
     private Long id;
 
-    // (4)
+    @Column(nullable=false)
     private String name;
 
-    // (5)
+    @Enumerated(EnumType.STRING)
     private WindowStatus windowStatus;
 
     public Window() {
