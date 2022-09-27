@@ -15,6 +15,22 @@ public class Heater {
     @Column
     private Long power;
 
+    public Heater(String name, Room room, HeaterStatus heaterStatus, Long power) {
+        this.name = name;
+        this.room = room;
+        this.heaterStatus = heaterStatus;
+        this.power=power;
+    }
+
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     @ManyToOne
     private Room room;
 

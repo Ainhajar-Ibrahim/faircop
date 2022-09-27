@@ -35,6 +35,7 @@ public class Window {
         this.name = name;
     }
 
+
     public Long getId() {
         return this.id;
     }

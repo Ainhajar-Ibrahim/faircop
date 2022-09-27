@@ -19,19 +19,19 @@ public class WindowController {
     private final WindowDao windowDao;
     private final RoomDao roomDao;
 
-    public WindowController(WindowDao windowDao, RoomDao roomDao) { // (4)
+    public WindowController(WindowDao windowDao, RoomDao roomDao) {
         this.windowDao = windowDao;
         this.roomDao = roomDao;
     }
 
-    @GetMapping // (5)
+    @GetMapping
     public List<WindowDto> findAll() {
-        return windowDao.findAll().stream().map(WindowDto::new).collect(Collectors.toList());  // (6)
+        return windowDao.findAll().stream().map(WindowDto::new).collect(Collectors.toList());
     }
 
     @GetMapping(path = "/{id}")
     public WindowDto findById(@PathVariable Long id) {
-        return windowDao.findById(id).map(WindowDto::new).orElse(null); // (7)
+        return windowDao.findById(id).map(WindowDto::new).orElse(null);
     }
 
     @PutMapping(path = "/{id}/switch")
@@ -41,7 +41,7 @@ public class WindowController {
         return new WindowDto(window);
     }
 
-    @PostMapping // (8)
+    @PostMapping
     public WindowDto create(@RequestBody WindowDto dto) {
         // WindowDto must always contain the window room
         Room room = roomDao.getById(dto.getRoomId());
@@ -51,7 +51,7 @@ public class WindowController {
             window = windowDao.save(new Window(dto.getName(), dto.getWindowStatus(), room));
         }
         else {
-            window = windowDao.getById(dto.getId());  // (9)
+            window = windowDao.getById(dto.getId());
             window.setWindowStatus(dto.getWindowStatus());
         }
         return new WindowDto(window);
