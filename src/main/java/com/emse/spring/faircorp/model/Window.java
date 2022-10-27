@@ -17,8 +17,15 @@ public class Window {
     @Enumerated(EnumType.STRING)
     private WindowStatus windowStatus;
 
+
     @ManyToOne
     private Room room;
+
+    public Window(String name, WindowStatus windowStatus, Room room) {
+        this.name = name;
+        this.windowStatus = windowStatus;
+        this.room = room;
+    }
 
     public Window() {
     }
@@ -27,6 +34,7 @@ public class Window {
         this.windowStatus = status;
         this.name = name;
     }
+
 
     public Long getId() {
         return this.id;
@@ -50,5 +58,13 @@ public class Window {
 
     public void setWindowStatus(WindowStatus windowStatus) {
         this.windowStatus = windowStatus;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }

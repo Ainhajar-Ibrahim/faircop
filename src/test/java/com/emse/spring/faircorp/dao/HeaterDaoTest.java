@@ -32,7 +32,7 @@ class HeaterDaoTest {
     @Test
     public void shouldDeleteHeatersRoom() {
         Room room = roomDao.getReferenceById(-10L);
-        List<Long> roomIds = room.getWindow().stream().map(Window::getId).collect(Collectors.toList());
+        List<Long> roomIds = room.getWindows().stream().map(Window::getId).collect(Collectors.toList());
         Assertions.assertThat(roomIds.size()).isEqualTo(2);
 
         heaterDao.deleteHeatersbyRoom(-10L);

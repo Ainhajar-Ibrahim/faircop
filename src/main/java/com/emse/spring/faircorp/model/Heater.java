@@ -3,7 +3,7 @@ package com.emse.spring.faircorp.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "RHEATER")
+@Table(name = "HEATER")
 public class Heater {
     @Id
     @GeneratedValue
@@ -14,6 +14,13 @@ public class Heater {
 
     @Column
     private Long power;
+
+    public Heater(String name, Room room, HeaterStatus heaterStatus, Long power) {
+        this.name = name;
+        this.room = room;
+        this.heaterStatus = heaterStatus;
+        this.power=power;
+    }
 
     @ManyToOne
     private Room room;
@@ -52,6 +59,14 @@ public class Heater {
 
     public void setPower(Long power) {
         this.power = power;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
 

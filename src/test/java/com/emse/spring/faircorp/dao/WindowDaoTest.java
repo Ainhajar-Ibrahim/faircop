@@ -48,7 +48,7 @@ class WindowDaoTest {
     @Test
     public void shouldDeleteWindowsRoom() {
         Room room = roomDao.getReferenceById(-10L);
-        List<Long> roomIds = room.getWindow().stream().map(Window::getId).collect(Collectors.toList());
+        List<Long> roomIds = room.getWindows().stream().map(Window::getId).collect(Collectors.toList());
         Assertions.assertThat(roomIds.size()).isEqualTo(2);
 
         windowDao.deleteWindowsbyRoom(-10L);

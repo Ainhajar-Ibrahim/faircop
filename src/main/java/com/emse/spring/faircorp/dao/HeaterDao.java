@@ -9,5 +9,5 @@ public interface HeaterDao extends JpaRepository<Heater, Long>, HeaterDaoCustom 
     @Query("select c from Heater c where c.name=:name")
     Heater findByName(@Param("name") String name);
     @Query("select c from Heater c where c.id=:id")
-    Heater getReferenceById(@Param("id") String name);
+    Heater getReferenceById(@Param("id") Long id);
 }
