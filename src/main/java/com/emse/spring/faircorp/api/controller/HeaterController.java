@@ -1,15 +1,16 @@
-package com.emse.spring.faircorp.api;
+package com.emse.spring.faircorp.api.controller;
 
+import com.emse.spring.faircorp.api.dto.HeaterDto;
 import com.emse.spring.faircorp.dao.RoomDao;
 import com.emse.spring.faircorp.dao.HeaterDao;
-import com.emse.spring.faircorp.model.Room;
-import com.emse.spring.faircorp.model.Heater;
+import com.emse.spring.faircorp.model.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/heaters")
 @Transactional
@@ -42,11 +43,19 @@ public class HeaterController {
             heater = heaterDao.save(new Heater(dto.getName(), room, dto.getHeaterStatus(), dto.getPower()));
         }
         else {
-            heater = heaterDao.getById(dto.getId());
+            heater = heaterDao.getReferenceById(dto.getId());
             heater.setHeaterStatus(dto.getHeaterStatus());
         }
         return new HeaterDto(heater);
     }
+
+    @PutMapping(path = "/{id}/switch")
+    public HeaterDto switchStatus(@PathVariable Long id) {
+        Heater heater = heaterDao.findById(id).orElseThrow(IllegalArgumentException::new);
+        heater.setHeaterStatus(heater.getHeaterStatus() == HeaterStatus.ON ? HeaterStatus.OFF: HeaterStatus.ON);
+        return new HeaterDto(heater);
+    }
+
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id) {
         heaterDao.deleteById(id);

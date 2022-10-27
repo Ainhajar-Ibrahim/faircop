@@ -10,7 +10,7 @@ public interface WindowDao extends JpaRepository<Window, Long>, WindowDaoCustom 
     @Query("select c from Window c where c.name=:name")
     Window findByName(@Param("name") String name);
     @Query("select c from Window c where c.id=:id")
-    Window getReferenceById(@Param("id") String name);
+    Window getReferenceById(@Param("id") Long id);
 
 
 }

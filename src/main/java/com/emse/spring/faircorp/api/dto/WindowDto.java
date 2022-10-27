@@ -1,4 +1,4 @@
-package com.emse.spring.faircorp.api;
+package com.emse.spring.faircorp.api.dto;
 
 import com.emse.spring.faircorp.model.Window;
 import com.emse.spring.faircorp.model.WindowStatus;
@@ -19,6 +19,11 @@ public class WindowDto {
         this.windowStatus = window.getWindowStatus();
         this.roomName = window.getRoom().getName();
         this.roomId = window.getRoom().getId();
+    }
+
+    public WindowDto(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Long getId() {

@@ -1,5 +1,6 @@
-package com.emse.spring.faircorp.api;
+package com.emse.spring.faircorp.api.controller;
 
+import com.emse.spring.faircorp.api.dto.WindowDto;
 import com.emse.spring.faircorp.dao.RoomDao;
 import com.emse.spring.faircorp.dao.WindowDao;
 import com.emse.spring.faircorp.model.Room;
@@ -11,6 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/windows")
 @Transactional
@@ -44,14 +46,14 @@ public class WindowController {
     @PostMapping
     public WindowDto create(@RequestBody WindowDto dto) {
         // WindowDto must always contain the window room
-        Room room = roomDao.getById(dto.getRoomId());
+        Room room = roomDao.getReferenceById(dto.getRoomId());
         Window window = null;
         // On creation id is not defined
         if (dto.getId() == null) {
             window = windowDao.save(new Window(dto.getName(), dto.getWindowStatus(), room));
         }
         else {
-            window = windowDao.getById(dto.getId());
+            window = windowDao.getReferenceById(dto.getId());
             window.setWindowStatus(dto.getWindowStatus());
         }
         return new WindowDto(window);

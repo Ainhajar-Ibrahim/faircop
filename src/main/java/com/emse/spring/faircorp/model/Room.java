@@ -1,11 +1,10 @@
 package com.emse.spring.faircorp.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Set;
 
 @Entity
-@Table(name = "RROOM")
+@Table(name = "ROOM")
 public class Room {
 
     @Id
@@ -28,11 +27,25 @@ public class Room {
     private Set<Heater> heaters;
 
     @OneToMany(mappedBy = "room")
-    private Set<Window> window;
+    private Set<Window> windows;
+
+    @ManyToOne
+    private Building building;
 
     public Room(String name, Integer floor) {
         this.name = name;
         this.floor = floor;
+    }
+
+    public Room(String name, Integer floor, Double current_temperature, Double target_temperature, Set<Heater> heaters, Set<Window> windows, Building building) {
+        this.name = name;
+        this.floor = floor;
+        this.current_temperature = current_temperature;
+        this.target_temperature = target_temperature;
+        this.heaters = heaters;
+        this.windows = windows;
+        this.building = building;
+
     }
 
     public Room() {
@@ -86,11 +99,19 @@ public class Room {
         this.heaters = heaters;
     }
 
-    public Set<Window> getWindow() {
-        return window;
+    public Set<Window> getWindows() {
+        return windows;
     }
 
     public void setWindow(Set<Window> window) {
-        this.window = window;
+        this.windows = windows;
+    }
+
+    public Building getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
     }
 }

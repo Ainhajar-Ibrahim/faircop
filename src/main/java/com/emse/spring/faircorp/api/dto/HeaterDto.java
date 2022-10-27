@@ -1,4 +1,4 @@
-package com.emse.spring.faircorp.api;
+package com.emse.spring.faircorp.api.dto;
 
 import com.emse.spring.faircorp.model.Heater;
 import com.emse.spring.faircorp.model.HeaterStatus;
@@ -23,6 +23,11 @@ public class HeaterDto {
         this.roomName = heater.getRoom().getName();
         this.roomId = heater.getRoom().getId();
         this.power=heater.getPower();
+    }
+
+    public HeaterDto(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
 
