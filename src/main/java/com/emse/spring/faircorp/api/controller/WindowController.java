@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = { "http://localhost:8081" }, maxAge = 3600)
+@CrossOrigin
 @RestController
 @RequestMapping("/api/windows")
 @Transactional
