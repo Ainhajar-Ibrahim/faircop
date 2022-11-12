@@ -13,4 +13,4 @@ Run this command in the root file of the project
 Then in a browser open https://localhost:8080  
 
 ## API TEST  
-Go to https://localhost:8080/swagger-ui/ or http://faircorp-ainhajar-ibrahim.cleverapps.io/swagger-ui/ and test the API.
+Go to https://localhost:8080/swagger-ui/ or https://faircorp-no-security-ainhajar-ibrahim.cleverapps.io/swagger-ui/ and test the API.
