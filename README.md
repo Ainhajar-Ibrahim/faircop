@@ -1,5 +1,4 @@
-# Faircorp Backend
-[Deployed on Clever-Cloud](http://faircorp-ainhajar-ibrahim.cleverapps.io/)  
+# Faircorp Backend 
 Based on the [Guillaume Ehret's](https://dev-mind.fr/) course.    
 A Springboot application that was hosted on the clever cloud.  
 [Deployed API](http://faircorp-ainhajar-ibrahim.cleverapps.io/)  
