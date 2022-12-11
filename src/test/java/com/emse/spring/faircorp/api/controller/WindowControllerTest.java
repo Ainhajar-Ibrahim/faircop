@@ -46,7 +46,7 @@ class WindowControllerTest {
     private RoomDao roomDao;
 
     @Test
-    @WithMockUser(roles = ROLE_ADMIN)
+    //@WithMockUser(roles = ROLE_ADMIN)
     void shouldLoadWindows() throws Exception {
         given(windowDao.findAll()).willReturn(List.of(
                 createWindow("window 1"),
