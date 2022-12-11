@@ -40,9 +40,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: artifact
+          path: "./build"
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "artifact/*"
+          artifacts: "./build/*"
 
 
 
