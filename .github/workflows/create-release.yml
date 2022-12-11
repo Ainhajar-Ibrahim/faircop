@@ -28,6 +28,6 @@ jobs:
     - name: create release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: ""build/app/libs/*.jar"
+        artifacts: "build/app/libs/*.jar"
 
 #https://github.com/marketplace/actions/create-release
