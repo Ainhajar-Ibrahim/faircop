@@ -11,7 +11,7 @@ jobs:
 
     runs-on: windows-latest
     permissions:
-      contents: write
+      contents: read
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -23,9 +23,27 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
-    - name: create release
-      uses: ncipollo/release-action@v1
+    - name: Temporarily save Docker image
+      uses: actions/upload-artifact@v2
       with:
-        artifacts: "./build/libs/*"
+        name: artifact
+        path: "./build/libs"
+        retention-days: 1
+  release:
+    needs: build
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      - name: Retrieve saved artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: artifact
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "artifact/*"
+
+
 
 #https://github.com/marketplace/actions/create-release
