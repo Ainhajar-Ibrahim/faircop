@@ -26,6 +26,6 @@ jobs:
     - name: Test with Gradle
       run: ./gradlew build
     - name: create release
-    - uses: ncipollo/release-action@v1
+      uses: ncipollo/release-action@v1
       with:
         artifacts: "*.jar"
