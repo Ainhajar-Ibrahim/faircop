@@ -23,15 +23,11 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
-      # Upload Artifact
-    - name: Upload production-ready build files
-      uses: actions/upload-artifact@v3
-      with:
-        name: production
-        path: ./build
+    - name: Build artifacts
+      run: ./gradlew build
     - name: create release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "./build/*.jar"
+        artifacts: "./build/libs"
 
 #https://github.com/marketplace/actions/create-release
