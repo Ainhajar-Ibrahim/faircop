@@ -51,7 +51,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: test
-        run: find CHANGELOG.md
+        run: echo ${{ steps.create_release.outputs.id }}
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
@@ -66,3 +66,6 @@ jobs:
 
 
 #https://github.com/marketplace/actions/create-release
+
+#https://github.com/marketplace/actions/generate-changelog
+#https://github.com/actions/upload-release-asset
