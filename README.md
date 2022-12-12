@@ -17,4 +17,3 @@ Password: adminPassword
 ## API TEST  
 Go to https://localhost:8080/swagger-ui/ or http://faircorp-ainhajar-ibrahim.cleverapps.io/swagger-ui/ and test the API.
 
-commit a change
