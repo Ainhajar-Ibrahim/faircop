@@ -49,7 +49,9 @@ jobs:
   changelog:
     needs: release
     runs-on: ubuntu-20.04
-    steps:
+        steps:
+      - name: test
+        run: echo ${{ needs.release.steps.create_release.outputs.upload_url }}
       - name: Generate release changelog
         uses: heinrichreimer/github-changelog-generator-action@v2.3
         with:
