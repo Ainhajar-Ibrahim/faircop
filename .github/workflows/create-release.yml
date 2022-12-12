@@ -31,7 +31,7 @@ jobs:
         retention-days: 1
   release:
     needs: build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -58,6 +58,7 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./github/workspace/CHANGELOG.md
           asset_name: CHANGELOG.md
+          asset_content_type: application/md
 
 
 
