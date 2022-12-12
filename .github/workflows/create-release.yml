@@ -50,6 +50,8 @@ jobs:
     needs: release
     runs-on: ubuntu-20.04
     steps:
+      - name: test
+        run: echo ${{ needs.release.steps.create_release.outputs.upload_url }}
       - name: Generate release changelog
         uses: heinrichreimer/github-changelog-generator-action@v2.3
         with:
@@ -62,7 +64,6 @@ jobs:
           upload_url: ${{ needs.release.steps.create_release.outputs.upload_url }}
           asset_path: ./github/workspace/CHANGELOG.md
           asset_name: CHANGELOG.md
-          asset_content_type: application/zip
 
 
 
