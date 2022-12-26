@@ -50,7 +50,7 @@ jobs:
         id: create_release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "./artifacts/build/*, ./artifacts/docs/*"
+          artifacts: "./artifacts/build/libs/*, ./artifacts/docs/*"
       - name: Generate release changelog
         uses: heinrichreimer/github-changelog-generator-action@v2.3
         with:
