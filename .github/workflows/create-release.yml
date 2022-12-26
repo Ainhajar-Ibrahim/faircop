@@ -24,7 +24,7 @@ jobs:
       with:
         arguments: build
     - name: Temporarily save artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: artifact
         path: |
@@ -39,15 +39,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Retrieve saved artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: artifact
-          path: "./build"
+          path: "./artifacts"
       - name: Create Release
         id: create_release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "./build/*"
+          artifacts: "./artifacts/*"
       - name: Generate release changelog
         uses: heinrichreimer/github-changelog-generator-action@v2.3
         with:
