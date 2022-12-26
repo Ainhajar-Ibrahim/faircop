@@ -27,7 +27,9 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: artifact
-        path: "./build/libs"
+        path: |
+          "./docs"
+          "./build/libs"
         retention-days: 1
   release:
     needs: build
