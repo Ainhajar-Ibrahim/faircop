@@ -28,8 +28,8 @@ jobs:
       with:
         name: artifact
         path: |
-          "./build/libs/"
-          "./docs/"
+         ./docs
+         ./build/libs
         retention-days: 1
   release:
     needs: build
