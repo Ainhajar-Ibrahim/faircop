@@ -1,0 +1,8 @@
+com.emse.spring.faircorp
+com.emse.spring.faircorp.api.controller
+com.emse.spring.faircorp.api.dto
+com.emse.spring.faircorp.dao
+com.emse.spring.faircorp.hello
+com.emse.spring.faircorp.model
+com.emse.spring.faircorp.service
+com.emse.spring.faircorp.service.dto

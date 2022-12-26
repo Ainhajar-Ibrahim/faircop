@@ -15,6 +15,9 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * A REST controller of the room.
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/rooms")
@@ -33,17 +36,30 @@ public class RoomController {
         this.buildingDao = buildingDao;
     }
 
-
+    /**
+     * A GET request fetch all the rooms.
+     * @return List of RoomDto.
+     */
     @GetMapping
     public List<RoomDto> findAll() {
         return roomDao.findAll().stream().map(RoomDto::new).collect(Collectors.toList());
     }
 
+    /**
+     * A Get request to fetch the room by id.
+     * @return RoomDto.
+     * @param id the id of the room to get.
+     */
     @GetMapping(path = "/{id}")
     public RoomDto findById(@PathVariable Long id) {
         return roomDao.findById(id).map(RoomDto::new).orElse(null);
     }
 
+    /**
+     * A POST request to Create a room.
+     * @return RoomDto.
+     * @param dto a room with a constructor (id, current_temperature, windows, heaters).
+     */
     @PostMapping
     public RoomDto create(@RequestBody RoomDto dto) {
         Room room = null;
@@ -72,6 +88,11 @@ public class RoomController {
         return new RoomDto(room);
     }
 
+    /**
+     * A PUT request to switch the windows of a room.
+     * @return RoomDto.
+     * @param id the id of the room modify.
+     */
     @PutMapping(path = "/{id}/switchWindow")
     public RoomDto switchWindowStatus(@PathVariable Long id) {
         Room room = roomDao.findById(id).orElseThrow(IllegalArgumentException::new);
@@ -79,6 +100,11 @@ public class RoomController {
         return new RoomDto(room);
     }
 
+    /**
+     * A PUT request to switch the heaters of a room.
+     * @return RoomDto.
+     * @param id the id of the room modify.
+     */
     @PutMapping(path = "/{id}/switchHeater")
     public RoomDto switchHeaterStatus(@PathVariable Long id) {
         Room room = roomDao.findById(id).orElseThrow(IllegalArgumentException::new);
@@ -86,6 +112,10 @@ public class RoomController {
         return new RoomDto(room);
     }
 
+    /**
+     * A Delete request to remove the room by id.
+     * @param id the id of the room to delete.
+     */
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id) {
 

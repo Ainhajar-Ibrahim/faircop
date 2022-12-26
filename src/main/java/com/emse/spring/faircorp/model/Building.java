@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Entity that represents the building model.
+ */
 @Entity
 @Table(name = "BUILDING")
 public class Building {
@@ -45,35 +48,66 @@ public class Building {
         this.adress = adress;
     }
 
-
+    /**
+     * A getter of the id of the building.
+     * @return (Long) the id of the building.
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * A setter of the id of the building.
+     * @param id the id of the building.
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * A getter of the name of the building.
+     * @return (String) the name of the building.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * A setter of the name of the building.
+     * @param name the name of the building.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * A getter of the rooms of the building.
+     * @return (Set) the rooms of the building.
+     */
     public Set<Room> getRooms() {
         return rooms;
     }
 
+    /**
+     * A setter of the rooms of the building.
+     * @param rooms the rooms of the building.
+     */
     public void setRooms(Set<Room> rooms) {
         this.rooms = rooms;
     }
 
+    /**
+     * A getter of the Adress of the building.
+     * @return (String) the Adress of the building.
+     */
     public String getAdress() {
         return adress;
     }
 
+    /**
+     * A setter of the Adress of the building.
+     * @param adress the adress of the building.
+     */
     public void setAdress(String adress) {
         this.adress = adress;
     }

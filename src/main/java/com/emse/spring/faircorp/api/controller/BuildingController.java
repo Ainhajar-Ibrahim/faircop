@@ -16,6 +16,9 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * A REST controller of the building.
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/buildings")
@@ -34,15 +37,29 @@ public class BuildingController {
         this.buildingDao=buildingDao;
     }
 
+    /**
+     * A GET request fetch all the buildings.
+     * @return List of BuildingDto.
+     */
     @GetMapping
     public List<BuildingDto> findAll() {
         return buildingDao.findAll().stream().map(BuildingDto::new).collect(Collectors.toList());
     }
+    /**
+     * A Get request to fetch the building by id.
+     * @return BuildingDto.
+     * @param id the id of the building to get.
+     */
     @GetMapping(path = "/{id}")
     public BuildingDto findById(@PathVariable Long id) {
         return buildingDao.findById(id).map(BuildingDto::new).orElse(null);
     }
 
+    /**
+     * A POST request to Create a building.
+     * @return BuildingDto.
+     * @param dto a building with a constructor (id, name, rooms).
+     */
     @PostMapping
     public BuildingDto create(@RequestBody BuildingDto dto) {
         Building building = null;
@@ -65,6 +82,12 @@ public class BuildingController {
         return new BuildingDto(building);
     }
 
+    /**
+     * A PUT request to modify a building.
+     * @return BuildingDto.
+     * @param id the id of the building modify.
+     * @param dto the room with a temperature that we want to set to the current temperature of the rooms of the building.
+     */
     @PutMapping(path = "/{id}/switchtemproom")
     public BuildingDto switchRoomTemperature(@PathVariable Long id, @RequestParam RoomDto dto) {
         Building building = buildingDao.findById(id).orElseThrow(IllegalArgumentException::new);
@@ -72,6 +95,10 @@ public class BuildingController {
         return new BuildingDto(building);
     }
 
+    /**
+     * A Delete request to remove the building by id.
+     * @param id the id of the building to delete.
+     */
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id) {
 

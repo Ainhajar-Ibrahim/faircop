@@ -12,6 +12,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * A REST controller of the window.
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/windows")
@@ -26,16 +29,30 @@ public class WindowController {
         this.roomDao = roomDao;
     }
 
+    /**
+     * A GET request fetch all the windows.
+     * @return List of WindowDto.
+     */
     @GetMapping
     public List<WindowDto> findAll() {
         return windowDao.findAll().stream().map(WindowDto::new).collect(Collectors.toList());
     }
 
+    /**
+     * A Get request to fetch the window by id.
+     * @return WindowDto.
+     * @param id the id of the window to get.
+     */
     @GetMapping(path = "/{id}")
     public WindowDto findById(@PathVariable Long id) {
         return windowDao.findById(id).map(WindowDto::new).orElse(null);
     }
 
+    /**
+     * A PUT request to switch a window.
+     * @return WindowDto.
+     * @param id the id of the window modify.
+     */
     @PutMapping(path = "/{id}/switch")
     public WindowDto switchStatus(@PathVariable Long id) {
         Window window = windowDao.findById(id).orElseThrow(IllegalArgumentException::new);
@@ -43,6 +60,11 @@ public class WindowController {
         return new WindowDto(window);
     }
 
+    /**
+     * A POST request to Create a window.
+     * @return WindowDto.
+     * @param dto a window with a constructor (id, name, WindowStatus, room).
+     */
     @PostMapping
     public WindowDto create(@RequestBody WindowDto dto) {
         // WindowDto must always contain the window room
@@ -59,6 +81,10 @@ public class WindowController {
         return new WindowDto(window);
     }
 
+    /**
+     * A Delete request to remove the window by id.
+     * @param id the id of the window to delete.
+     */
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id) {
         windowDao.deleteById(id);
