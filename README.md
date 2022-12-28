@@ -22,5 +22,5 @@ Password: adminPassword
 Go to https://localhost:8080/swagger-ui/ or http://faircorp-ainhajar-ibrahim.cleverapps.io/swagger-ui/ and test the API. 
 #### License
 ©️ 2022 Ainhajar Ibrahim
-Licensed under the [LICENSE](LICENSE)
+Licensed under the [LICENSE](https://github.com/Ainhajar-Ibrahim/faircop/blob/main/LICENSE.md)
 
