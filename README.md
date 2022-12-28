@@ -4,7 +4,8 @@ A Springboot application that was hosted on the clever cloud.
 - This applications allows the user to control the temperature of the rooms of each building, the state of the windows and heaters.
 
 [Deployed API](http://faircorp-ainhajar-ibrahim.cleverapps.io/)  
-documentation : [javadoc](https://ainhajar-ibrahim.github.io/faircop/docs/docs/index.html)
+The Front End for this project : [Front-End](https://github.com/Ainhajar-Ibrahim/faircorp_front_end)  
+Documentation : [javadoc](https://ainhajar-ibrahim.github.io/faircop/docs/docs/index.html)
 ## Project setup
 After cloning the project:  
 Build the project and Run the following class faircop\src\main\java\com\emse\spring\faircorp\Application.java
