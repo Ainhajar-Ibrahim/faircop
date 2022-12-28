@@ -3,8 +3,7 @@ Based on the [Guillaume Ehret's](https://dev-mind.fr/) course.
 A Springboot application that was hosted on the clever cloud. 
 - This applications allows the user to control the temperature of the rooms of each building, the state of the windows and heaters.
 
-[Deployed API](http://faircorp-ainhajar-ibrahim.cleverapps.io/) 
-
+[Deployed API](http://faircorp-ainhajar-ibrahim.cleverapps.io/)  
 documentation : [javadoc](https://ainhajar-ibrahim.github.io/faircop/docs/docs/index.html)
 ## Project setup
 After cloning the project:  
@@ -15,9 +14,10 @@ Run this command in the root file of the project
 ./gradlew bootRun
 ```  
 Then in a browser open https://localhost:8080  
-A login page will pop up. Give the following credentiels:  
+Since Security was disabled the credentiels aren't necessary.  
+(A login page will pop up. Give the following credentiels:  
 Username: admin  
-Password: adminPassword
+Password: adminPassword)
 ## API TEST  
 Go to https://localhost:8080/swagger-ui/ or http://faircorp-ainhajar-ibrahim.cleverapps.io/swagger-ui/ and test the API. 
 #### License
