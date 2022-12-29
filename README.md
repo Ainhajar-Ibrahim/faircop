@@ -21,7 +21,17 @@ Username: admin
 Password: adminPassword)
 ## API TEST  
 Go to https://localhost:8080/swagger-ui/ or http://faircorp-ainhajar-ibrahim.cleverapps.io/swagger-ui/ and test the API. 
-#### License
+## Docker 
+Make sure you built the project and that the jar file is in the build/libs folder. 
+Or else run the following command in the root file of the project to build it: 
+```
+./gradlew build
+``` 
+To create a container and run it, run the following command in the root file of the project (you need to have docker installed and running): 
+```
+docker run -p 8080:8080 faircorp/backend
+```
+## License
 ©️ 2022 Ainhajar Ibrahim
 Licensed under the [LICENSE](https://github.com/Ainhajar-Ibrahim/faircop/blob/main/LICENSE.md)
 
